@@ -31,4 +31,29 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    const elements = document.querySelectorAll('section.resume-section');
+
+    function checkPosition() {
+        const windowHeight = window.innerHeight;
+
+        elements.forEach(element => {
+            const positionFromTop = element.getBoundingClientRect().top;
+
+            if (positionFromTop - windowHeight <= 0) {
+                element.classList.add('fadeInUp');
+
+                element.addEventListener('animationend', (event) => {
+                    const typingElement = element.querySelector('.typing-animation');
+                    if (typingElement) {
+                        typingElement.style.opacity = 1;
+                        typingElement.style.animation = `typing 1.5s steps(40, end), blink-caret .75s step-end infinite`;
+                    }
+                }, { once: true });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkPosition);
+    checkPosition(); 
+
 });

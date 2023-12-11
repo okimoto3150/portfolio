@@ -10953,9 +10953,43 @@ section.resume-section {
   padding-bottom: 5rem;
   max-width: 75rem;
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.fadeInUp {
+    animation: fadeInUp 1.5s forwards;
+}
 section.resume-section .resume-section-content {
   width: 100%;
 }
+
+.typing-animation {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid black; /* カーソルのように見せる */
+    opacity: 0; /* 初期状態では透明 */
+    display: inline-block; /* インラインブロック要素として設定 */
+    width: auto; /* 初期状態で幅を自動に設定 */
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 75% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: black; }
+}
+
 
 @media (min-width: 768px) {
   section.resume-section {
